@@ -284,10 +284,10 @@ export default function DashboardPage() {
       {/* ── Tab: Platform ── */}
       {activeTab === 'platform' && (
         <div className="animate-fade" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <PlatformChart data={platformData} metric="spend"  metricLabel="Spend"  />
-          <PlatformChart data={platformData} metric="leads"  metricLabel="Leads"  />
-          <PlatformChart data={platformData} metric="clicks" metricLabel="Clicks" />
-          <PlatformChart data={platformData} metric="impressions" metricLabel="Impressions" />
+          <PlatformChart data={platformData} metricKey="spend"  metricLabel="Spend"  />
+          <PlatformChart data={platformData} metricKey="leads"  metricLabel="Leads"  />
+          <PlatformChart data={platformData} metricKey="clicks" metricLabel="Clicks" />
+          <PlatformChart data={platformData} metricKey="impressions" metricLabel="Impressions" />
         </div>
       )}
 
