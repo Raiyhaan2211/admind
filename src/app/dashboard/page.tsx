@@ -131,7 +131,7 @@ export default function DashboardPage() {
 
   // Determine active objectives from campaigns
   const activeObjectives = useMemo(() =>
-    [...new Set(demoCampaigns.filter(c => c.status === 'active').map(c => c.objective))] as Objective[],
+    Array.from(new Set(demoCampaigns.filter(c => c.status === 'active').map(c => c.objective))) as Objective[],
   [])
   const kpis = useMemo(() => getKpisForObjectives(activeObjectives), [activeObjectives])
 
