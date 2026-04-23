@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --bg:           #0a0a0f;
+  --bg-card:      #111118;
+  --bg-hover:     #18181f;
+  --border:       rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.14);
+  --text-primary: #f0f0f5;
+  --text-muted:   #6b6b82;
+  --text-dim:     #3a3a4d;
+  --accent:       #6366f1;
+  --accent-dim:   rgba(99,102,241,0.15);
+  --accent-glow:  rgba(99,102,241,0.35);
+  --green:        #22c55e;
+  --red:          #ef4444;
+  --amber:        #f59e0b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 4px; }
+
+/* Animations */
+@keyframes fadeIn  { from { opacity:0 } to { opacity:1 } }
+@keyframes slideUp { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:translateY(0) } }
+@keyframes pulse   { 0%,100% { opacity:1 } 50% { opacity:.5 } }
+
+.animate-fade  { animation: fadeIn  0.4s ease forwards; }
+.animate-slide { animation: slideUp 0.4s ease forwards; }
+
+/* Staggered children */
+.stagger > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger > *:nth-child(2)  { animation-delay: 60ms; }
+.stagger > *:nth-child(3)  { animation-delay: 120ms; }
+.stagger > *:nth-child(4)  { animation-delay: 180ms; }
+.stagger > *:nth-child(5)  { animation-delay: 240ms; }
+.stagger > *:nth-child(6)  { animation-delay: 300ms; }
+.stagger > *:nth-child(7)  { animation-delay: 360ms; }
+.stagger > *:nth-child(8)  { animation-delay: 420ms; }
+
+/* Card base */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.card:hover { border-color: var(--border-hover); }
+
+/* Pill badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Platform pill colours */
+.plat-google   { background: rgba(66,133,244,0.12);  color: #7ab4f8; }
+.plat-meta     { background: rgba(24,119,242,0.12);  color: #6fa8f8; }
+.plat-tiktok   { background: rgba(0,242,234,0.10);   color: #5de8e2; }
+.plat-linkedin { background: rgba(10,102,194,0.12);  color: #6aaee8; }
+.plat-snapchat { background: rgba(255,252,0,0.10);   color: #f5ef6a; }
+
+/* Status dots */
+.status-active { color: var(--green); }
+.status-paused { color: var(--amber); }
+.status-ended  { color: var(--text-muted); }
+
+/* Recharts override */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border) !important;
+}
+.recharts-tooltip-wrapper { outline: none; }
