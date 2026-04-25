@@ -200,7 +200,7 @@ export default function DashboardPage() {
 
       {activeTab === 'frequency' && (
         <div className="animate-fade" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
-          <FrequencyChart data={dailyData} />
+          <FrequencyChart data={dailyData.map(d => ({ date: d.date, reach: d.reach, frequency: d.reach > 0 ? d.impressions / d.reach : null }))} />
           <PlatformChart data={platformData} metricKey="reach" metricLabel="Reach by platform" />
         </div>
       )}
