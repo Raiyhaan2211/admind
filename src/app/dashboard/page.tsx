@@ -70,11 +70,11 @@ function groupByPlatform(rows: DailyMetric[]) {
 }
 
 // Build data format PlatformTrendChart expects: [{date, google, meta, tiktok,...}]
-function buildPlatformTrendData(rows: DailyMetric[], metric: keyof RawMetrics) {
+function buildPlatformTrendData(rows: DailyMetric[], metric: 'spend'|'leads'|'clicks'|'impressions'|'conversions'|'reach') {
   const map = new Map<string, Record<string, number>>()
   rows.forEach(r => {
     const existing = map.get(r.date) ?? {}
-    existing[r.platform] = (existing[r.platform] ?? 0) + (r[metric] as number)
+    const val = r[metric as keyof typeof r]; existing[r.platform] = (existing[r.platform] ?? 0) + (typeof val === 'number' ? val : 0)
     map.set(r.date, existing)
   })
   return Array.from(map.entries())
