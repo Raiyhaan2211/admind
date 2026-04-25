@@ -152,7 +152,7 @@ export default function DashboardPage() {
       </div>
 
       {activeTab === 'creatives'     && <div className="animate-fade"><CreativeTable rows={creativeRows} /></div>}
-      {activeTab === 'creative-perf' && <div className="animate-fade"><CreativePerformanceChart rows={creativeRows} /></div>}
+      {activeTab === 'creative-perf' && <div className="animate-fade"><CreativePerformanceChart data={creativeRows.map(r => ({ name: r.name + ' (' + r.language + ')', roas: r.metrics.roas ?? 0, leads: r.metrics.leads ?? 0, spend: r.metrics.spend ?? 0, cpl: r.metrics.cpl }))} /></div>}
       {activeTab === 'platform' && (
         <div className="animate-fade" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <PlatformChart data={platformData} metricKey="spend"       metricLabel="Spend"       />
